@@ -48,16 +48,19 @@ void dissmissBoard(BuildContext context) {
   FocusScope.of(context).unfocus();
 }
 
-Widget showLoading(BuildContext context) {
-  return Container(
-    width: layoutWidth(context),
-    height: layoutHeight(context),
-    color: Colors.blueGrey.withOpacity(0.5),
-    child: const Center(
-      child: CircularProgressIndicator(
-        strokeWidth: 50,
-        semanticsLabel: "Loading...",
-        semanticsValue: "Loading...",
+Widget showLoading(BuildContext context, bool isLoading) {
+  return Visibility(
+    visible: isLoading,
+    child: Container(
+      width: layoutWidth(context),
+      height: layoutHeight(context),
+      color: Colors.blueGrey.withOpacity(0.5),
+      child: const Center(
+        child: CircularProgressIndicator(
+          strokeWidth: 50,
+          semanticsLabel: "Loading...",
+          semanticsValue: "Loading...",
+        ),
       ),
     ),
   );

@@ -67,7 +67,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               ),
             ),
           ),
-          _isLoading ? showLoading(context) : SizedBox(),
+          showLoading(context, _isLoading),
         ],
       ),
     );

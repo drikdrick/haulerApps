@@ -55,7 +55,7 @@ class _VerifyOtpState extends State<VerifyOtp> {
               ],
             ),
           ),
-          _isLoading ? showLoading(context) : const SizedBox(),
+          showLoading(context, _isLoading),
         ],
       ),
     );
