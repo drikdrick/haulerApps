@@ -1,6 +1,7 @@
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_input.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/screens/authentication/verify_otp_screen.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatefulWidget {
@@ -31,7 +32,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 children: [
                   Text(
                     "Masukkan Email Anda",
-                    style: kBody,
                   ),
                   const SizedBox(height: 25),
                   textInput(_emailController, "Email", "",
@@ -43,15 +43,19 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     child: ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              _isLoading = true;
-                            });
-                            Future.delayed(Duration(seconds: 2)).then((value) {
-                              setState(() {
-                                _isLoading = false;
-                              });
-                              displayResponse(context, Colors.blue, "Berhasil");
-                            });
+                            // setState(() {
+                            //   _isLoading = true;
+                            // });
+                            fixedTo(context,
+                                VerifyOtp(emailUser: _emailController.text));
+                            _isLoading = false;
+                            // Future.delayed(Duration(seconds: 2)).then((value) {
+                            //   setState(() {
+                            //     navigateTo(context, VerifyOtp(emailUser: _emailController.text));
+                            //     _isLoading = false;
+                            //   });
+                            //   displayResponse(context, Colors.blue, "Berhasil");
+                            // });
                           }
                         },
                         child: Text(

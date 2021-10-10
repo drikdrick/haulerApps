@@ -1,6 +1,7 @@
 import 'package:bokshaul_haulier/components/profile/profile_tile.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/screens/logged/call_center.dart';
+import 'package:bokshaul_haulier/screens/logged/edit_password_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/edit_profile_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/privacy_policy.dart';
 import 'package:bokshaul_haulier/screens/logged/term_condition.dart';
@@ -71,7 +72,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           profileTile(
               context, Icons.person, "Ubah Profile", const EditProfile()),
           profileTile(
-              context, Icons.lock, "Ganti Password", const EditProfile()),
+              context, Icons.lock, "Ganti Password", const EditPassword()),
           profileTile(
             context,
             Icons.privacy_tip,

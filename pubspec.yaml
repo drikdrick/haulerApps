@@ -40,6 +40,7 @@ dependencies:
   carousel_slider: ^4.0.0
   convex_bottom_bar: ^3.0.0
   url_launcher: ^6.0.12
+  pin_code_fields: ^7.3.0
 
 flutter_icons:
   android: "launcher_icon"
