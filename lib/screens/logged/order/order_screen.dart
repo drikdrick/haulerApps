@@ -3,8 +3,11 @@ import 'package:bokshaul_haulier/components/orders/done_order_list.dart';
 import 'package:bokshaul_haulier/components/orders/pending_order_list.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/screens/logged/invoice_screen.dart';
+import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
+import 'package:bokshaul_haulier/screens/logged/order/detail_pending_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'detail_ongoing_screen.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({Key? key}) : super(key: key);
@@ -25,7 +28,7 @@ class _OrderScreenState extends State<OrderScreen> {
           IconButton(
             onPressed: () => navigateTo(
               context,
-              const InvoiceScreen(),
+              const DetailPending(),
             ),
             icon: const Icon(Icons.document_scanner_rounded),
           ),
@@ -47,9 +50,7 @@ class _OrderScreenState extends State<OrderScreen> {
                           borderRadius: BorderRadius.circular(50),
                         ),
                         child: TabBar(
-                          unselectedLabelStyle:
-                              kSecTitle.copyWith(fontSize: 14),
-                          labelStyle: kTitle.copyWith(fontSize: 14),
+                          labelStyle: kHeadlineSmall,
                           indicator: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             boxShadow: const [

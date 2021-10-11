@@ -1,5 +1,6 @@
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/screens/logged/invoice/invoice_unpaid_screen.dart';
 import 'package:flutter/material.dart';
 
 class InvoiceScreen extends StatefulWidget {
@@ -10,13 +11,11 @@ class InvoiceScreen extends StatefulWidget {
 }
 
 class _InvoiceScreenState extends State<InvoiceScreen> {
-  final bool _isLoading = false;
-  bool checkbox = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Invoice Saya"),
+        title: const Text("Invoice Saya"),
       ),
       body: DefaultTabController(
         length: 2,
@@ -52,9 +51,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                               ),
                             ],
                           ),
-                          labelStyle: kTitle.copyWith(fontSize: 14),
-                          unselectedLabelStyle:
-                              kSecTitle.copyWith(fontSize: 14),
+                          labelStyle: kHeadlineSmall,
                         ),
                       ),
                     ),
@@ -62,24 +59,13 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                   Expanded(
                     child: TabBarView(
                       children: [
-                        Text("Belum"),
+                        InvoiceUnpaid(),
                         Text("Selesai"),
                       ],
                     ),
                   ),
                 ],
               ),
-              showLoading(context, _isLoading),
-            ],
-          ),
-        ),
-      ),
-      bottomSheet: Visibility(
-        child: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-
             ],
           ),
         ),

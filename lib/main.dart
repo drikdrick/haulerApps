@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    precacheImage(AssetImage("assets/images/truck.png"), context);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
