@@ -107,7 +107,7 @@ class DetailFinish extends StatelessWidget {
                 child: Column(
                   children: [
                     Text("Milestone", style: kHeadlineSmall),
-                    Divider(),
+                    const Divider(),
                     statusOrder(),
                     statusOrder(),
                     statusOrder(),

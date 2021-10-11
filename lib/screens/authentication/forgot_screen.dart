@@ -30,7 +30,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               key: _formKey,
               child: Column(
                 children: [
-                  Text(
+                  const Text(
                     "Masukkan Email Anda",
                   ),
                   const SizedBox(height: 25),

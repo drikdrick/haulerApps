@@ -1,5 +1,5 @@
 import 'package:bokshaul_haulier/screens/logged/home_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
+// import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/order_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/profile/profile_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -18,53 +18,10 @@ class _IndexState extends State<Index> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     bottomIndex = widget.index;
   }
 
-  final List<BottomNavigationBarItem> _bottomItems = [
-    const BottomNavigationBarItem(
-      label: 'Home',
-      icon: Icon(
-        Icons.home_outlined,
-      ),
-      activeIcon: Icon(
-        Icons.home,
-        color: Colors.blue,
-      ),
-    ),
-    const BottomNavigationBarItem(
-      label: 'Order',
-      icon: Icon(
-        Icons.directions_car_filled_outlined,
-      ),
-      activeIcon: Icon(
-        Icons.directions_car,
-        color: Colors.blue,
-      ),
-    ),
-    // const BottomNavigationBarItem(
-    //   label: 'Invoice',
-    //   icon: Icon(
-    //     Icons.article_outlined,
-    //   ),
-    //   activeIcon: Icon(
-    //     Icons.article,
-    //     color: Colors.blue,
-    //   ),
-    // ),
-    const BottomNavigationBarItem(
-      label: 'Profile',
-      icon: Icon(
-        Icons.account_circle_outlined,
-      ),
-      activeIcon: Icon(
-        Icons.account_circle,
-        color: Colors.blue,
-      ),
-    ),
-  ];
 
   final List<Widget> _widget = [
     const HomeScreen(),

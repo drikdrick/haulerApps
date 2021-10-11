@@ -42,14 +42,14 @@ class _VerifyOtpState extends State<VerifyOtp> {
                   autoFocus: true,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   onChanged: (value) {
-                    print(value);
+                    // print(value);
                   },
                   onCompleted: (value) {
                     setState(() {
                       _isLoading = true;
                     });
-                    Future.delayed(Duration(seconds: 1))
-                        .then((value) => fixedTo(context, ResetPassword()));
+                    Future.delayed(const Duration(seconds: 1))
+                        .then((value) => fixedTo(context, const ResetPassword()));
                   },
                 ),
               ],

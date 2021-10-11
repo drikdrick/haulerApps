@@ -15,7 +15,7 @@ class _EditPasswordState extends State<EditPassword> {
   final TextEditingController _newPassword = TextEditingController();
   final TextEditingController _rePassword = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  bool _isLoading = false;
+  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(

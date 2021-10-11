@@ -29,7 +29,7 @@ class _OrderScreenState extends State<OrderScreen> {
           IconButton(
             onPressed: () => navigateTo(
               context,
-              const DetailFinish(),
+              const InvoiceScreen(),
             ),
             icon: const Icon(Icons.document_scanner_rounded),
           ),
@@ -73,9 +73,18 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                   Expanded(
                     child: TabBarView(children: [
-                      listOrderBerlangsung(),
-                      listOrderPending(),
-                      listOrderSelesai()
+                      InkWell(
+                        child: listOrderBerlangsung(),
+                        onTap: () => navigateTo(context, const DetailOngoing()),
+                      ),
+                      InkWell(
+                        child: listOrderPending(),
+                        onTap: () => navigateTo(context, const DetailPending()),
+                      ),
+                      InkWell(
+                        child: listOrderSelesai(),
+                        onTap: () => navigateTo(context, const DetailFinish()),
+                      ),
                     ]),
                   )
                 ],
