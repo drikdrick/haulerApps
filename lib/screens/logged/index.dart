@@ -1,7 +1,7 @@
 import 'package:bokshaul_haulier/screens/logged/home_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/invoice_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/profile_screen.dart';
+import 'package:bokshaul_haulier/screens/logged/profile/profile_screen.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -44,16 +44,16 @@ class _IndexState extends State<Index> {
         color: Colors.blue,
       ),
     ),
-    const BottomNavigationBarItem(
-      label: 'Invoice',
-      icon: Icon(
-        Icons.article_outlined,
-      ),
-      activeIcon: Icon(
-        Icons.article,
-        color: Colors.blue,
-      ),
-    ),
+    // const BottomNavigationBarItem(
+    //   label: 'Invoice',
+    //   icon: Icon(
+    //     Icons.article_outlined,
+    //   ),
+    //   activeIcon: Icon(
+    //     Icons.article,
+    //     color: Colors.blue,
+    //   ),
+    // ),
     const BottomNavigationBarItem(
       label: 'Profile',
       icon: Icon(
@@ -69,7 +69,7 @@ class _IndexState extends State<Index> {
   final List<Widget> _widget = [
     const HomeScreen(),
     const OrderScreen(),
-    const InvoiceScreen(),
+    // const InvoiceScreen(),
     const ProfileScreen(),
   ];
 
@@ -85,7 +85,7 @@ class _IndexState extends State<Index> {
         items: const [
           TabItem(icon: Icons.auto_awesome_mosaic, activeIcon: Icons.auto_awesome_mosaic_outlined,title: "Home"),
           TabItem(icon: Icons.online_prediction_rounded, activeIcon: Icons.online_prediction_rounded, title: "Order"),
-          TabItem(icon: Icons.article, activeIcon: Icons.article_outlined,title: "Invoice"),
+          // TabItem(icon: Icons.article, activeIcon: Icons.article_outlined,title: "Invoice"),
           TabItem(icon: Icons.person_pin, activeIcon: Icons.person_pin, title: "Profile"),
         ],
         onTap: (value) {
