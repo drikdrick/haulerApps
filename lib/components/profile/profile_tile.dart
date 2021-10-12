@@ -10,7 +10,22 @@ Widget profileTile(BuildContext context, IconData icon, String title, tujuan) {
   );
 }
 
-Widget callCenterTile(String title,void callBack, Widget icon) {
+Widget logoutTile(BuildContext context, IconData icon, String title, tujuan) {
+  return ListTile(
+    leading: Icon(
+      icon,
+      color: Colors.red,
+    ),
+    trailing: const Icon(Icons.chevron_right_sharp, color: Colors.red),
+    title: Text(
+      title,
+      style: TextStyle(color: Colors.red),
+    ),
+    onTap: () => fixedTo(context, tujuan),
+  );
+}
+
+Widget callCenterTile(String title, void callBack, Widget icon) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: ListTile(

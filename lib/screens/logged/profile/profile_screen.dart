@@ -1,5 +1,6 @@
 import 'package:bokshaul_haulier/components/profile/profile_tile.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/screens/authentication/login_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/profile/call_center.dart';
 import 'package:bokshaul_haulier/screens/logged/profile/edit_password_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/profile/edit_profile_screen.dart';
@@ -91,11 +92,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             "Hubungi Boksman",
             const CallCenter(),
           ),
-          profileTile(
+          logoutTile(
             context,
             Icons.logout,
             "Keluar",
-            const CallCenter(),
+            const LoginScreen(),
           ),
         ],
       ),

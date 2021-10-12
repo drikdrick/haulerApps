@@ -35,10 +35,10 @@ class EditProfileState extends State<EditProfile> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      Image.asset(
-                        'assets/images/boksman_logo.png',
-                        height: layoutHeight(context) / 8,
-                      ),
+                      // Image.asset(
+                      //   'assets/images/boksman_logo.png',
+                      //   height: layoutHeight(context) / 8,
+                      // ),
                       const SizedBox(height: 10),
                       textInput(_companyName, "Company", "Contoh: Boksman Asia",
                           const Icon(Icons.business_center)),

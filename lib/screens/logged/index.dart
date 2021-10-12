@@ -41,7 +41,7 @@ class _IndexState extends State<Index> {
         height: 45,
         items: const [
           TabItem(icon: Icons.auto_awesome_mosaic, activeIcon: Icons.auto_awesome_mosaic_outlined,title: "Home"),
-          TabItem(icon: Icons.online_prediction_rounded, activeIcon: Icons.online_prediction_rounded, title: "Order"),
+          TabItem(icon: Icons.format_list_bulleted, activeIcon: Icons.format_list_bulleted, title: "Order"),
           // TabItem(icon: Icons.article, activeIcon: Icons.article_outlined,title: "Invoice"),
           TabItem(icon: Icons.person_pin, activeIcon: Icons.person_pin, title: "Profile"),
         ],
