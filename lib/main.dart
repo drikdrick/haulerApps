@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Inter',
         splashColor: Colors.blue,
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Colors.white.withOpacity(0.95),
+        scaffoldBackgroundColor: Colors.white.withOpacity(0.975),
         inputDecorationTheme: InputDecorationTheme(
           enabledBorder:
               const OutlineInputBorder(borderSide: BorderSide(color: Colors.blueGrey)),

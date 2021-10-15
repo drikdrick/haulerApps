@@ -1,3 +1,4 @@
+import 'package:bokshaul_haulier/components/function/login.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ Widget profileTile(BuildContext context, IconData icon, String title, tujuan) {
   );
 }
 
-Widget logoutTile(BuildContext context, IconData icon, String title, tujuan) {
+Widget logoutTile(BuildContext context, IconData icon, String title) {
   return ListTile(
     leading: Icon(
       icon,
@@ -21,7 +22,7 @@ Widget logoutTile(BuildContext context, IconData icon, String title, tujuan) {
       title,
       style: const TextStyle(color: Colors.red),
     ),
-    onTap: () => fixedTo(context, tujuan),
+    onTap: () => logout(context),
   );
 }
 

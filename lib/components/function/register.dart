@@ -28,10 +28,8 @@ Future<void> registerAccount(BuildContext context, String company, String phone,
   Uri url = Uri.parse(base_url + '/register');
 
   var response = await http.post(url, body: data);
-  print(response.statusCode);
 
   if (response.statusCode == 201) {
-    print(response.body);
     fixedTo(context, VerifyOtp(emailUser: email));
   } else {
     if (response.body.contains('company')) {
@@ -49,9 +47,11 @@ Future<void> checkOTP(BuildContext context, String otp) async {
   final jsonResponse = jsonDecode(response.body);
   if (jsonResponse["success"]) {
     fixedTo(context, const LoginScreen());
-    displayResponse(context, Colors.green, "Registrasi berhasil. Silahkan masuk.");
-  }else{
-    displayResponse(context, Colors.red, "Verifikasi gagal. Silahkan coba lagi.");
+    displayResponse(
+        context, Colors.green, "Registrasi berhasil. Silahkan masuk.");
+  } else {
+    displayResponse(
+        context, Colors.red, "Verifikasi gagal. Silahkan coba lagi.");
   }
 }
 

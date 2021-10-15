@@ -96,7 +96,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             context,
             Icons.logout,
             "Keluar",
-            const LoginScreen(),
           ),
         ],
       ),

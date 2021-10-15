@@ -1,3 +1,4 @@
+import 'package:bokshaul_haulier/components/function/login.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_input.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
@@ -61,7 +62,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                   setState(() {
                                     _isLoading = true;
                                   });
-                                  fixedTo(context, const Index(index: 0));
+
+                                  login(context, _usernameController.text, _passwordController.text).then((value) {
+                                    setState(() {
+                                      _isLoading = false;
+                                    });
+                                  });
                                 }
                               },
                               child: Text(
