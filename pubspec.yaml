@@ -44,6 +44,7 @@ dependencies:
   sliding_up_panel: ^2.0.0+1
   google_maps_flutter: ^2.0.11
   shimmer: ^2.0.0
+  http: ^0.13.4
 
 flutter_icons:
   android: "launcher_icon"

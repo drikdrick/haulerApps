@@ -19,7 +19,7 @@ Widget logoutTile(BuildContext context, IconData icon, String title, tujuan) {
     trailing: const Icon(Icons.chevron_right_sharp, color: Colors.red),
     title: Text(
       title,
-      style: TextStyle(color: Colors.red),
+      style: const TextStyle(color: Colors.red),
     ),
     onTap: () => fixedTo(context, tujuan),
   );

@@ -1,3 +1,4 @@
+import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:flutter/material.dart';
@@ -116,7 +117,7 @@ class _InvoiceUnpaidState extends State<InvoiceUnpaid> {
                   ),
                 ],
               ),
-              const Divider(),
+              const Divider(thickness: 2,),
               Row(
                 children: [
                   Checkbox(
@@ -135,52 +136,16 @@ class _InvoiceUnpaidState extends State<InvoiceUnpaid> {
                     },
                   ),
                   Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text("Shipping Line"),
-                            const Text("Voyage Number"),
-                            const Text("Driver Name"),
-                            const Text("No. Polisi"),
-                            Text(
-                              "Total",
-                              style: kHeadlineSmall.copyWith(
-                                color: Colors.blue,
-                                fontSize: 12,
-                              ),
-                            ),
-                            const Text(""),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            const Text("CMA CGM"),
-                            const Text("511S"),
-                            const Text("Ade Rohman"),
-                            const Text("B9002UEI"),
-                            Text(
-                              "Rp" + hargaSatuan.toString(),
-                              style: kHeadlineSmall.copyWith(
-                                color: Colors.blue,
-                                fontSize: 12,
-                              ),
-                            ),
-                            Text(
-                              "2021-07-25 18:32:03",
-                              style: kHeadlineSmall.copyWith(
-                                color: Colors.red,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
+                        detailInfoCard("Shipping Line", "CMA CGM"),
+                        detailInfoCard("Voyage Number", "511S"),
+                        detailInfoCard("Driver Name", "Ade Rohman"),
+                        detailInfoCard("No. Polisi", "B9002UEI"),
+                        detailCard("Total", '600,000'),
                       ],
                     ),
-                  )
+                  ),
                 ],
               )
             ],
