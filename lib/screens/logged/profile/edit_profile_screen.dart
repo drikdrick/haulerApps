@@ -1,4 +1,4 @@
-import 'package:bokshaul_haulier/components/authentication/register.dart';
+import 'package:bokshaul_haulier/components/function/register.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_input.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
@@ -63,14 +63,6 @@ class EditProfileState extends State<EditProfile> {
                               setState(() {
                                 // _isLoading = true;
                               });
-                              registerAccount(
-                                context,
-                                _companyName.text,
-                                _phoneNumber.text,
-                                _emailController.text,
-                                _passwordController.text,
-                                _rePasswordController.text,
-                              );
                             }
                           },
                           child: Text(

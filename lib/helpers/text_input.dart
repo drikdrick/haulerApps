@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 // import 'package:intl_phone_field/intl_phone_field.dart';
 // import 'package:intl_phone_field/intl_phone_field.dart';
 
@@ -41,7 +43,7 @@ Widget phoneInput(
   //   initialCountryCode: 'ID',
   //   onChanged: (phone) {
   //     print(phone.completeNumber);
-  //     print(controller.text);
+  //     // print(controller.text);
   //   },
   //   // countries: ["ID", "SG", "US"],
   //   keyboardType: TextInputType.phone,
@@ -53,6 +55,7 @@ Widget phoneInput(
     controller: controller,
     decoration:
         textField(hint, label, icon).copyWith(prefix: const Text("+62")),
+    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
     validator: (value) {
       if (value == null || value.isEmpty) {
         return label + " tidak boleh kosong.";

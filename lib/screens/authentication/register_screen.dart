@@ -1,4 +1,4 @@
-import 'package:bokshaul_haulier/components/authentication/register.dart';
+import 'package:bokshaul_haulier/components/function/register.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_input.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
@@ -19,7 +19,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
-  final bool _isLoading = false;
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,16 +64,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           dissmissBoard(context);
                           if (_formKey.currentState!.validate()) {
                             setState(() {
-                              // _isLoading = true;
+                              _isLoading = true;
                             });
                             registerAccount(
-                              context,
-                              _companyName.text,
-                              _phoneNumber.text,
-                              _emailController.text,
-                              _passwordController.text,
-                              _rePasswordController.text,
-                            );
+                                    context,
+                                    _companyName.text,
+                                    _phoneNumber.text,
+                                    _usernameController.text,
+                                    _emailController.text,
+                                    _passwordController.text,
+                                    _rePasswordController.text)
+                                .then((value) {
+                              setState(() {
+                                _isLoading = false;
+                              });
+                            });
                           }
                         },
                         child: Text(
