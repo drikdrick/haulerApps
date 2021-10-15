@@ -1,3 +1,4 @@
+import 'package:bokshaul_haulier/components/function/register.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/screens/authentication/reset_password.dart';
@@ -48,9 +49,26 @@ class _VerifyOtpState extends State<VerifyOtp> {
                     setState(() {
                       _isLoading = true;
                     });
-                    Future.delayed(const Duration(seconds: 1))
-                        .then((value) => fixedTo(context, const ResetPassword()));
+                    checkOTP(context, value).then((value) {
+                      setState(() {
+                        _isLoading = false;
+                      });
+                    });
                   },
+                ),
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _isLoading = true;
+                    });
+
+                    resentOTP(context, widget.emailUser).then((value) {
+                      setState(() {
+                        _isLoading = false;
+                      });
+                    });
+                  },
+                  child: const Text("Kirim ulang kode OTP"),
                 ),
               ],
             ),
