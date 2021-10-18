@@ -41,8 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     textInput(_companyName, "Company", "Contoh: Boksman Asia",
                         const Icon(Icons.business_center)),
                     const SizedBox(height: 10),
-                    phoneInput(
-                        _phoneNumber, "Phone", "", const Icon(Icons.phone)),
+                    phoneInput(_phoneNumber, "Phone", const Icon(Icons.phone)),
                     const SizedBox(height: 10),
                     textInput(_usernameController, "Username", "",
                         const Icon(Icons.perm_identity)),

@@ -21,7 +21,6 @@ Future<void> login(
     SharedPreferences _preference = await SharedPreferences.getInstance();
     _preference.setBool("isLoggedIn", true);
     _preference.setString("userId", jsonResponse['data']['id'].toString());
-    print(jsonResponse['data']['id']);
     fixedTo(
         context,
         const Index(

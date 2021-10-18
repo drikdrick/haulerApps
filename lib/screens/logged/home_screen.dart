@@ -81,13 +81,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
+            const Divider(
+              thickness: 1,
+              color: Colors.blueGrey,
+            ),
             Text(
               "Order Saat Ini",
               style: kTitle.copyWith(fontSize: 18),
-            ),
-            const Divider(
-              thickness: 1,
-              color: Colors.black,
             ),
             Expanded(
               child: Padding(

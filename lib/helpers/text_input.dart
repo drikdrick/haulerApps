@@ -36,7 +36,7 @@ Widget passwordInput(
 }
 
 Widget phoneInput(
-    TextEditingController controller, String label, String hint, Icon icon) {
+    TextEditingController controller, String label, Icon icon) {
   // return IntlPhoneField(
   //   controller: controller,
   //   decoration: textField(hint, label, icon).copyWith(counterText: ""),
@@ -54,12 +54,12 @@ Widget phoneInput(
     keyboardType: TextInputType.phone,
     controller: controller,
     decoration:
-        textField(hint, label, icon).copyWith(prefix: const Text("+62")),
+        textField("62xxxxxxxxxxx", label, icon).copyWith(prefix: const Text("+")),
     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
     validator: (value) {
       if (value == null || value.isEmpty) {
         return label + " tidak boleh kosong.";
-      } else if (value.length >= 12 || value.length <= 8) {
+      } else if (value.length >= 14 || value.length <= 12) {
         return "Format salah. Mohon diperbaiki.";
       }
       return null;

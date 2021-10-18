@@ -1,12 +1,13 @@
-import 'package:bokshaul_haulier/components/function/register.dart';
+import 'package:bokshaul_haulier/components/profile/update_profile.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_input.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/models/user_model.dart';
 import 'package:flutter/material.dart';
 
 class EditProfile extends StatefulWidget {
-  const EditProfile({Key? key}) : super(key: key);
-
+  const EditProfile({Key? key, required this.currentUser}) : super(key: key);
+  final User currentUser;
   @override
   EditProfileState createState() => EditProfileState();
 }
@@ -19,7 +20,17 @@ class EditProfileState extends State<EditProfile> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _rePasswordController = TextEditingController();
-  final bool _isLoading = false;
+  bool _isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _companyName.text = widget.currentUser.company;
+    _phoneNumber.text = widget.currentUser.phone;
+    _usernameController.text = widget.currentUser.username;
+    _emailController.text = widget.currentUser.email;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,16 +46,12 @@ class EditProfileState extends State<EditProfile> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      // Image.asset(
-                      //   'assets/images/boksman_logo.png',
-                      //   height: layoutHeight(context) / 8,
-                      // ),
                       const SizedBox(height: 10),
                       textInput(_companyName, "Company", "Contoh: Boksman Asia",
                           const Icon(Icons.business_center)),
                       const SizedBox(height: 10),
                       phoneInput(
-                          _phoneNumber, "Phone", "", const Icon(Icons.phone)),
+                          _phoneNumber, "Phone", const Icon(Icons.phone)),
                       const SizedBox(height: 10),
                       textInput(_usernameController, "Username", "",
                           const Icon(Icons.perm_identity)),
@@ -61,7 +68,18 @@ class EditProfileState extends State<EditProfile> {
                             dissmissBoard(context);
                             if (_formKey.currentState!.validate()) {
                               setState(() {
-                                // _isLoading = true;
+                                _isLoading = true;
+                              });
+                              editProfile(
+                                      context,
+                                      _companyName.text,
+                                      _phoneNumber.text,
+                                      _emailController.text,
+                                      _usernameController.text)
+                                  .then((value) {
+                                setState(() {
+                                  _isLoading = false;
+                                });
                               });
                             }
                           },

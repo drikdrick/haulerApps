@@ -1,6 +1,12 @@
+import 'dart:convert';
+
+import 'package:bokshaul_haulier/components/function/config.dart';
 import 'package:bokshaul_haulier/components/function/login.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
+import 'package:bokshaul_haulier/models/user_model.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 Widget profileTile(BuildContext context, IconData icon, String title, tujuan) {
   return ListTile(
@@ -37,4 +43,19 @@ Widget callCenterTile(String title, void callBack, Widget icon) {
       trailing: const Icon(Icons.arrow_right),
     ),
   );
+}
+
+Future<User> fetchUser() async {
+  SharedPreferences _preference = await SharedPreferences.getInstance();
+  var userId = _preference.getString("userId")!;
+  Uri url = Uri.parse(base_url + "/dataprofil/" + userId);
+
+  final response = await http.get(url);
+  if (response.statusCode == 201) {
+    print(User.fromJson(jsonDecode(response.body)["data"][0]));
+    print(User.fromJson(jsonDecode(response.body)["data"][0]).email);
+    return User.fromJson(jsonDecode(response.body)["data"][0]);
+  } else {
+    throw Exception("Failed to load profile");
+  }
 }

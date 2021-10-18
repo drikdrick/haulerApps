@@ -36,6 +36,7 @@ class _IndexState extends State<Index> {
       body: _widget[bottomIndex],
       //Bottom NavBar
       bottomNavigationBar: ConvexAppBar(
+        initialActiveIndex: bottomIndex,
         backgroundColor: Colors.blue,
         // curveSize: ,
         height: 45,
