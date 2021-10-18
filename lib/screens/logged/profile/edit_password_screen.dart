@@ -1,3 +1,4 @@
+import 'package:bokshaul_haulier/components/profile/update_profile.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_input.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
@@ -15,7 +16,7 @@ class _EditPasswordState extends State<EditPassword> {
   final TextEditingController _newPassword = TextEditingController();
   final TextEditingController _rePassword = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final bool _isLoading = false;
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +28,7 @@ class _EditPasswordState extends State<EditPassword> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Form(
+              key: _formKey,
               child: Column(
                 children: [
                   passwordInput(
@@ -46,7 +48,14 @@ class _EditPasswordState extends State<EditPassword> {
                         dissmissBoard(context);
                         if (_formKey.currentState!.validate()) {
                           setState(() {
-                            // _isLoading = true;
+                            _isLoading = true;
+                          });
+                          editPassword(context, _oldPassword.text,
+                                  _newPassword.text, _rePassword.text)
+                              .then((value) {
+                            setState(() {
+                              _isLoading = false;
+                            });
                           });
                         }
                       },
