@@ -1,1 +1,1 @@
-String base_url = "https://apiflutter.trucker.boksman.co.id";
+String baseUrl = "https://apiflutter.trucker.boksman.co.id";

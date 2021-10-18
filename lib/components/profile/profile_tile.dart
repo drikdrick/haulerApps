@@ -48,12 +48,10 @@ Widget callCenterTile(String title, void callBack, Widget icon) {
 Future<User> fetchUser() async {
   SharedPreferences _preference = await SharedPreferences.getInstance();
   var userId = _preference.getString("userId")!;
-  Uri url = Uri.parse(base_url + "/dataprofil/" + userId);
+  Uri url = Uri.parse(baseUrl + "/dataprofil/" + userId);
 
   final response = await http.get(url);
   if (response.statusCode == 201) {
-    print(User.fromJson(jsonDecode(response.body)["data"][0]));
-    print(User.fromJson(jsonDecode(response.body)["data"][0]).email);
     return User.fromJson(jsonDecode(response.body)["data"][0]);
   } else {
     throw Exception("Failed to load profile");

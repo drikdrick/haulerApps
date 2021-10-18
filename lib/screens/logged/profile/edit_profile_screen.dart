@@ -18,8 +18,6 @@ class EditProfileState extends State<EditProfile> {
   final TextEditingController _phoneNumber = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _rePasswordController = TextEditingController();
   bool _isLoading = false;
 
   @override

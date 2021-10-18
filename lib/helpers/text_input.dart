@@ -2,9 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
-// import 'package:intl_phone_field/intl_phone_field.dart';
-// import 'package:intl_phone_field/intl_phone_field.dart';
 
 Widget textInput(
     TextEditingController controller, String label, String hint, Icon icon) {

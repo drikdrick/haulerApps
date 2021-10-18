@@ -4,7 +4,6 @@ import 'package:bokshaul_haulier/helpers/text_input.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/screens/authentication/forgot_screen.dart';
 import 'package:bokshaul_haulier/screens/authentication/register_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/index.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {

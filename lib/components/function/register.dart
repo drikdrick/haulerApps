@@ -25,7 +25,7 @@ Future<void> registerAccount(BuildContext context, String company, String phone,
     'password': password,
     'phone': '+62' + phone,
   };
-  Uri url = Uri.parse(base_url + '/register');
+  Uri url = Uri.parse(baseUrl + '/register');
 
   var response = await http.post(url, body: data);
 
@@ -41,7 +41,7 @@ Future<void> registerAccount(BuildContext context, String company, String phone,
 }
 
 Future<void> checkOTP(BuildContext context, String otp) async {
-  Uri url = Uri.parse(base_url + '/verifikasi/otp');
+  Uri url = Uri.parse(baseUrl + '/verifikasi/otp');
 
   final response = await http.post(url, body: {'otp': otp});
   final jsonResponse = jsonDecode(response.body);
@@ -56,7 +56,7 @@ Future<void> checkOTP(BuildContext context, String otp) async {
 }
 
 Future<void> resentOTP(BuildContext context, String email) async {
-  Uri url = Uri.parse(base_url + '/resendotp');
+  Uri url = Uri.parse(baseUrl + '/resendotp');
 
   final response = await http.post(url, body: {'email': email});
 

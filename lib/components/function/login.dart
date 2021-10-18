@@ -11,7 +11,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> login(
     BuildContext context, String username, String password) async {
-  Uri url = Uri.parse(base_url + '/login');
+  Uri url = Uri.parse(baseUrl + '/login');
 
   final response =
       await http.post(url, body: {'username': username, 'password': password});
