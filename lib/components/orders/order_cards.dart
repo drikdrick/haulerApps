@@ -65,7 +65,7 @@ Widget displayOrder(
                 detailInfoCard("Order ID#", gkOrder),
                 detailInfoCard("Shipping Line", shippingline),
                 detailInfoCard("Tipe", type),
-                detailInfoCard("Status", orderMessage[17]),
+                detailInfoCard("Status", status),
               ],
             )),
       ],

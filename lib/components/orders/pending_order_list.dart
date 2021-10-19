@@ -1,3 +1,4 @@
+import 'package:bokshaul_haulier/models/order_model.dart';
 import 'package:flutter/material.dart';
 
 import 'order_cards.dart';
@@ -10,3 +11,5 @@ Widget listOrderPending(){
     ],
   );
 }
+
+

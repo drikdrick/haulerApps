@@ -5,14 +5,14 @@ import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/models/order_model.dart';
 import 'package:flutter/material.dart';
 
-class FinishedOrder extends StatefulWidget {
-  const FinishedOrder({Key? key}) : super(key: key);
+class PendingOrder extends StatefulWidget {
+  const PendingOrder({Key? key}) : super(key: key);
 
   @override
-  _FinishedOrderState createState() => _FinishedOrderState();
+  _PendingOrderState createState() => _PendingOrderState();
 }
 
-class _FinishedOrderState extends State<FinishedOrder> {
+class _PendingOrderState extends State<PendingOrder> {
   late Future<List<Order>> futureOrder;
   @override
   void initState() {
@@ -35,12 +35,12 @@ class _FinishedOrderState extends State<FinishedOrder> {
               itemCount: doneOrder.length,
               itemBuilder: (context, index) {
                 return displayOrder(
-                    Colors.blueGrey.withOpacity(0.75),
+                    Colors.orange,
                     doneOrder[index].origin,
                     doneOrder[index].destination,
                     doneOrder[index].orderId,
                     doneOrder[index].type,
-                    orderMessage[17],
+                    "-",
                     doneOrder[index].shipline);
               },
             );
@@ -50,6 +50,6 @@ class _FinishedOrderState extends State<FinishedOrder> {
   }
 
   void _refreshData() {
-    futureOrder = fetchFinishedOrder();
+    futureOrder = fetchPendingOrder();
   }
 }
