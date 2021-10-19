@@ -18,7 +18,6 @@ class ProfileScreen extends StatefulWidget {
 
 class _ProfileScreenState extends State<ProfileScreen> {
   late Future<User> futureUser;
-  late User currentUser;
   @override
   void initState() {
     super.initState();

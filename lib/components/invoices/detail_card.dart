@@ -18,11 +18,22 @@ Widget detailCard(String process, String price) {
 }
 
 Widget detailInfoCard(String info, String description) {
+  if (description == '1' || description == '4' || description == 'inbound' ) {
+    description = 'Inbound/Import';
+  }else if (description == '2' || description == '3' || description == 'outbound' ) {
+    description = 'Outbound/Eksport';
+  }
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(info, style: const TextStyle(fontWeight: FontWeight.bold)),
-      Text(description),
+      Flexible(
+        child: Text(
+          description,
+          textAlign: TextAlign.end,
+          overflow: TextOverflow.clip,
+        ),
+      ),
     ],
   );
 }

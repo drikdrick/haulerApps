@@ -6,25 +6,7 @@ Widget listOrderPending(){
   return ListView(
     children: [
       displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
+                        "type", "Status", "CMA CGM"),
     ],
   );
 }

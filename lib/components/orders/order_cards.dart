@@ -1,4 +1,6 @@
+import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/models/order_model.dart';
 import 'package:flutter/material.dart';
 
 Widget displayOrder(
@@ -8,6 +10,7 @@ Widget displayOrder(
   String gkOrder,
   String type,
   String status,
+  String shippingline,
 ) {
   return Card(
     shape: const RoundedRectangleBorder(
@@ -32,66 +35,39 @@ Widget displayOrder(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  portName,
-                  style: kHeadline.copyWith(color: Colors.white),
-                  overflow: TextOverflow.ellipsis,
+                Expanded(
+                  child: Text(
+                    portName,
+                    style: kHeadline.copyWith(color: Colors.white),
+                    overflow: TextOverflow.fade,
+                  ),
                 ),
                 const Icon(
                   Icons.arrow_right_alt,
                   color: Colors.white,
                 ),
-                Text(
-                  houseName,
-                  style: kHeadline.copyWith(color: Colors.white),
-                  overflow: TextOverflow.ellipsis,
+                Expanded(
+                  child: Text(
+                    houseName,
+                    style: kHeadline.copyWith(color: Colors.white),
+                    textAlign: TextAlign.end,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
               ],
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Order ID#",
-                    style: kHeadlineSmall,
-                  ),
-                  Text(
-                    "Order Type",
-                    style: kHeadlineSmall,
-                  ),
-                  Text(
-                    "Status",
-                    style: kHeadlineSmall,
-                  ),
-                ],
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    gkOrder,
-                    style: kBodySmall,
-                  ),
-                  Text(
-                    type,
-                    style: kBodySmall,
-                  ),
-                  Text(
-                    status,
-                    style: kBodySmall,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                detailInfoCard("Order ID#", gkOrder),
+                detailInfoCard("Shipping Line", shippingline),
+                detailInfoCard("Tipe", type),
+                detailInfoCard("Status", orderMessage[17]),
+              ],
+            )),
       ],
     ),
   );

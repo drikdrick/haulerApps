@@ -6,6 +6,7 @@ import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/detail_finish_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/detail_pending_screen.dart';
+import 'package:bokshaul_haulier/screens/logged/order/list_finished_order.dart';
 import 'package:flutter/material.dart';
 
 import 'detail_ongoing_screen.dart';
@@ -81,10 +82,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         child: listOrderPending(),
                         onTap: () => navigateTo(context, const DetailPending()),
                       ),
-                      InkWell(
-                        child: listOrderSelesai(),
-                        onTap: () => navigateTo(context, const DetailFinish()),
-                      ),
+                      const FinishedOrder(),
                     ]),
                   )
                 ],

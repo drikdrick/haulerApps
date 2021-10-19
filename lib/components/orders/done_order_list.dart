@@ -1,30 +1,22 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import 'order_cards.dart';
+import 'package:bokshaul_haulier/components/function/config.dart';
+import 'package:bokshaul_haulier/models/order_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
-Widget listOrderSelesai(){
-  return ListView(
-    children: [
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-      displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status"),
-    ],
-  );
+Future<List<Order>> fetchFinishedOrder() async {
+  SharedPreferences _preferences = await SharedPreferences.getInstance();
+  var userId = _preferences.getString("userId")!;
+  Uri url = Uri.parse(baseUrl + "/orderselesai/" + userId);
+  var response = await http.get(url);
+  final jsonResponse = jsonDecode(response.body);
+
+  if (jsonResponse["success"]) {
+    return (jsonResponse["data"] as List)
+        .map((e) => Order.fromJson(e))
+        .toList();
+  } else {
+    throw Exception(jsonResponse["message"]);
+  }
 }
