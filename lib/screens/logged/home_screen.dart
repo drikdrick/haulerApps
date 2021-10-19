@@ -1,6 +1,7 @@
 import 'package:bokshaul_haulier/components/orders/order_cards.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/screens/logged/order/list_order_home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -85,26 +86,10 @@ class _HomeScreenState extends State<HomeScreen> {
               thickness: 1,
               color: Colors.blueGrey,
             ),
-            Text(
-              "Order Saat Ini",
-              style: kTitle.copyWith(fontSize: 18),
-            ),
-            Expanded(
+            const Expanded(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(8, 0, 8, 10),
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: [
-                    displayOrder(Colors.green, "portName", "houseName", "GK_ORDER",
-                        "type", "Status", "CMA CGM"),
-                    displayOrder(Colors.red, "portName", "houseName", "GK_ORDER",
-                        "type", "Status", "CMA CGM"),
-                    displayOrder(Colors.blue, "portName", "houseName", "GK_ORDER",
-                        "type", "Status", "CMA CGM"),
-                    displayOrder(Colors.orange, "portName", "houseName", "GK_ORDER",
-                        "type", "Status", "CMA CGM"),
-                  ],
-                ),
+                padding: EdgeInsets.fromLTRB(8, 0, 8, 10),
+                child: LimitOrder(),
               ),
             )
           ],

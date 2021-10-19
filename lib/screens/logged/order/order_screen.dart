@@ -1,17 +1,10 @@
-import 'package:bokshaul_haulier/components/orders/current_order_list.dart';
-import 'package:bokshaul_haulier/components/orders/order_api.dart';
-import 'package:bokshaul_haulier/components/orders/pending_order_list.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/order/detail_finish_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/order/detail_pending_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/list_finished_order.dart';
 import 'package:bokshaul_haulier/screens/logged/order/list_ongoing_order.dart';
 import 'package:bokshaul_haulier/screens/logged/order/list_pending_order.dart';
 import 'package:flutter/material.dart';
-
-import 'detail_ongoing_screen.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({Key? key}) : super(key: key);
@@ -21,7 +14,6 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,7 +64,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                 ),
               ),
-              const Divider(thickness: 2,),
+              const Divider(
+                thickness: 2,
+              ),
               const Expanded(
                 child: TabBarView(children: [
                   OngoingOrder(),
