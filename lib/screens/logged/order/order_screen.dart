@@ -7,6 +7,7 @@ import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/detail_finish_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/detail_pending_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/list_finished_order.dart';
+import 'package:bokshaul_haulier/screens/logged/order/list_ongoing_order.dart';
 import 'package:bokshaul_haulier/screens/logged/order/list_pending_order.dart';
 import 'package:flutter/material.dart';
 
@@ -72,14 +73,11 @@ class _OrderScreenState extends State<OrderScreen> {
                 ),
               ),
               const Divider(thickness: 2,),
-              Expanded(
+              const Expanded(
                 child: TabBarView(children: [
-                  InkWell(
-                    child: listOrderBerlangsung(),
-                    onTap: () => navigateTo(context, const DetailOngoing()),
-                  ),
-                  const PendingOrder(),
-                  const FinishedOrder(),
+                  OngoingOrder(),
+                  PendingOrder(),
+                  FinishedOrder(),
                 ]),
               )
             ],

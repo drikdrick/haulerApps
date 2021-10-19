@@ -13,7 +13,7 @@ class Order {
   factory Order.fromJson(Map<String, dynamic> json) => Order(
         orderId: json["gk_order"],
         origin: json["nama_port"],
-        destination: json["nama_gudang"],
+        destination: json["nama_gudang"] ?? "Unknown",
         type: json["status_order"].toString(),
         status: json["status_driver"].toString(),
         shipline: json["sl_name"],
