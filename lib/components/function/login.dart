@@ -32,7 +32,15 @@ Future<void> login(
 }
 
 Future<void> logout(BuildContext context) async {
-  SharedPreferences _sharedPreferences  = await SharedPreferences.getInstance();
+  SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
   fixedTo(context, const LoginScreen());
   _sharedPreferences.clear();
+}
+
+void checkLogin(BuildContext context) async {
+  SharedPreferences _sharedPreferences = await SharedPreferences.getInstance();
+  bool isLogin = _sharedPreferences.getBool("isLoggedIn") ?? false;
+  isLogin
+      ? fixedTo(context, const Index(index: 0))
+      : fixedTo(context, const LoginScreen());
 }

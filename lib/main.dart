@@ -1,4 +1,4 @@
-import 'package:bokshaul_haulier/screens/authentication/login_screen.dart';
+import 'package:bokshaul_haulier/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,21 +19,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white.withOpacity(0.975),
         inputDecorationTheme: InputDecorationTheme(
-          enabledBorder:
-              const OutlineInputBorder(borderSide: BorderSide(color: Colors.blueGrey)),
+          enabledBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blueGrey)),
           focusedBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.blue),
               borderRadius: BorderRadius.circular(15)),
-          errorBorder:
-              const OutlineInputBorder(borderSide: BorderSide(color: Colors.red)),
+          errorBorder: const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red)),
           focusedErrorBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.red),
             borderRadius: BorderRadius.circular(15),
           ),
-          
         ),
       ),
-      home: const LoginScreen(),
+      home: const SplashScreen(),
     );
   }
 }
