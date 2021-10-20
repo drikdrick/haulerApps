@@ -1,49 +1,95 @@
 import 'dart:async';
 
+import 'package:bokshaul_haulier/models/order_detail_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-
 class MapSample extends StatefulWidget {
-  const MapSample({Key? key}) : super(key: key);
+  final OrderDetail order;
+  const MapSample({Key? key, required this.order}) : super(key: key);
 
   @override
   State<MapSample> createState() => MapSampleState();
 }
 
 class MapSampleState extends State<MapSample> {
-  final Completer<GoogleMapController> _controller = Completer();
-
-  static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(-6.274633507106117, 106.97600766111134),
-    zoom: 15,
-  );
-
-  static const CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  Completer<GoogleMapController> mapController = Completer();
+  final Set<Marker> markers = {};
+  late List<String> origin, destination;
+  late LatLng latLngDestination, latLngOrigin, center;
+  late LatLngBounds bound;
+  @override
+  void initState() {
+    origin = widget.order.originCoordinate.split(',');
+    destination = widget.order.destinationCoordinate.split(',');
+    latLngDestination =
+        LatLng(double.parse(destination[0]), double.parse(destination[1]));
+    latLngOrigin = LatLng(double.parse(origin[0]), double.parse(origin[1]));
+    center = LatLng(
+      (latLngDestination.latitude + latLngOrigin.latitude) / 2,
+      (latLngDestination.longitude + latLngOrigin.longitude) / 2,
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
-        initialCameraPosition: _kGooglePlex,
+        //Map widget from google_maps_flutter package
+        zoomGesturesEnabled: true, //enable Zoom in, out on map
+        initialCameraPosition: CameraPosition(
+          //innital position in map
+          target: center, //initial position
+          zoom: 10,
+          //initial zoom level
+        ),
+        markers: getmarkers(), //markers to show on map
+        mapType: MapType.normal, //map type
         onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
+          mapController.complete(controller);
         },
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
       ),
     );
   }
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  Set<Marker> getmarkers() {
+    //markers to place on map
+    setState(
+      () {
+        markers.add(Marker(
+          //add first marker
+          markerId: const MarkerId("origin/Consignee"),
+          position: LatLng(
+            double.parse(origin[0]),
+            double.parse(origin[1]),
+          ), //position of marker
+          infoWindow: InfoWindow(
+            //popup info
+            title: widget.order.origin,
+          ),
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueAzure), //Icon for Marker
+        ));
+
+        markers.add(
+          Marker(
+            //add second marker
+            markerId: const MarkerId("destination"),
+            position: LatLng(
+              double.parse(destination[0]),
+              double.parse(destination[1]),
+            ), //position of marker
+            infoWindow: InfoWindow(
+              //popup info
+              title: widget.order.destination,
+            ),
+            icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+          ),
+        );
+      },
+    );
+
+    return markers;
   }
 }

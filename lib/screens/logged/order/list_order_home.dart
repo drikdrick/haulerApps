@@ -5,6 +5,8 @@ import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/models/order_model.dart';
 import 'package:flutter/material.dart';
 
+import 'detail_ongoing_screen.dart';
+
 class LimitOrder extends StatefulWidget {
   const LimitOrder({Key? key}) : super(key: key);
 
@@ -13,6 +15,7 @@ class LimitOrder extends StatefulWidget {
 }
 
 class LimitOrderState extends State<LimitOrder> {
+  bool _isLoading = false;
   late Future<List<Order>> futureOrder;
 
   @override
@@ -46,41 +49,69 @@ class LimitOrderState extends State<LimitOrder> {
               );
             }
 
-            return Column(
+            return Stack(
               children: [
-                Text(
-                  "Order Saat Ini",
-                  style: kTitle.copyWith(fontSize: 18),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      late Color header;
-                      if (snapshot.data![index].orderStatus == '1' ||
-                          snapshot.data![index].orderStatus == '4' ||
-                          snapshot.data![index].orderStatus == 'inbound') {
-                        header = Colors.green;
-                      } else if (snapshot.data![index].orderStatus == '2' ||
-                          snapshot.data![index].orderStatus == '3' ||
-                          snapshot.data![index].orderStatus == 'outbound') {
-                        header = Colors.blue;
-                      }
-                      String message =
-                          orderMessage[snapshot.data![index].driverStatus+ 4];
+                Column(
+                  children: [
+                    Text(
+                      "Order Saat Ini",
+                      style: kTitle.copyWith(fontSize: 18),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          late Color header;
+                          if (snapshot.data![index].orderStatus == '1' ||
+                              snapshot.data![index].orderStatus == '4' ||
+                              snapshot.data![index].orderStatus == 'inbound') {
+                            header = Colors.green;
+                          } else if (snapshot.data![index].orderStatus == '2' ||
+                              snapshot.data![index].orderStatus == '3' ||
+                              snapshot.data![index].orderStatus == 'outbound') {
+                            header = Colors.blue;
+                          }
+                          String message = orderMessage[
+                              snapshot.data![index].driverStatus + 4];
 
-                      return displayOrder(
-                          header,
-                          snapshot.data![index].origin,
-                          snapshot.data![index].destination,
-                          snapshot.data![index].orderId,
-                          snapshot.data![index].orderStatus,
-                          message,
-                          snapshot.data![index].slName);
-                    },
-                  ),
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                _isLoading = true;
+                              });
+                              fetchDetailOrder(snapshot.data![index].orderId)
+                                  .then(
+                                (value) => navigateTo(
+                                  context,
+                                  DetailOngoing(
+                                    currentOrder: snapshot.data![index],
+                                    currentDetail: value,
+                                  ),
+                                ),
+                              );
+                              Future.delayed(const Duration(milliseconds: 750))
+                                  .then((value) {
+                                setState(() {
+                                  _isLoading = false;
+                                });
+                              });
+                            },
+                            child: displayOrder(
+                                header,
+                                snapshot.data![index].origin,
+                                snapshot.data![index].destination,
+                                snapshot.data![index].orderId,
+                                snapshot.data![index].orderStatus,
+                                message,
+                                snapshot.data![index].slName),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 ),
+                showLoading(context, _isLoading),
               ],
             );
           }

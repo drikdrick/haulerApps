@@ -32,8 +32,22 @@ class _OngoingOrderState extends State<OngoingOrder> {
             if (snapshot.hasData) {
               List<Order> doneOrder = snapshot.data!;
               if (snapshot.data!.isEmpty) {
-                return Center(
-                    child: Text("Data tidak ditermukan.", style: kHeadline));
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/truck.png",
+                        width: layoutWidth(context) / 2,
+                      ),
+                      Text(
+                        "Order kamu kosong, ayo segera order!",
+                        style: kBody,
+                      ),
+                    ],
+                  ),
+                );
               }
               return ListView.builder(
                 itemCount: doneOrder.length,
@@ -59,11 +73,17 @@ class _OngoingOrderState extends State<OngoingOrder> {
                       fetchDetailOrder(doneOrder[index].orderId).then(
                         (value) => navigateTo(
                           context,
-                          DetailOngoing(currentOrder: snapshot.data![index], currentDetail: value,),
+                          DetailOngoing(
+                            currentOrder: snapshot.data![index],
+                            currentDetail: value,
+                          ),
                         ),
                       );
-                      setState(() {
-                        _isLoading = false;
+                      Future.delayed(const Duration(milliseconds: 750))
+                          .then((value) {
+                        setState(() {
+                          _isLoading = false;
+                        });
                       });
                     },
                     child: displayOrder(

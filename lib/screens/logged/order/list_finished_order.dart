@@ -29,8 +29,22 @@ class _FinishedOrderState extends State<FinishedOrder> {
           if (snapshot.hasData) {
             List<Order> doneOrder = snapshot.data!;
             if (snapshot.data!.isEmpty) {
-              return Center(
-                  child: Text("Data tidak ditermukan.", style: kHeadline));
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/truck.png",
+                      width: layoutWidth(context) / 2,
+                    ),
+                    Text(
+                      "Order kamu kosong, ayo segera order!",
+                      style: kBody,
+                    ),
+                  ],
+                ),
+              );
             }
             return ListView.builder(
               itemCount: doneOrder.length,

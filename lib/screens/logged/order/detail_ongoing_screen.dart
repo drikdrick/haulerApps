@@ -76,7 +76,8 @@ class _DetailOngoingState extends State<DetailOngoing> {
               detailInfoCard("Shipping Line", widget.currentOrder.slName),
               detailInfoCard("Vessel Name", widget.currentOrder.vesselName),
               detailInfoCard("Voyage Number", widget.currentOrder.voyageNum),
-              detailInfoCard("Container Number", widget.currentOrder.containerNum),
+              detailInfoCard(
+                  "Container Number", widget.currentOrder.containerNum),
               detailInfoCard("Type", widget.currentOrder.orderStatus),
               const Divider(thickness: 2),
               addressSolution(
@@ -94,7 +95,9 @@ class _DetailOngoingState extends State<DetailOngoing> {
             ],
           ),
         ),
-        body: const MapSample(),
+        body: MapSample(
+          order: widget.currentDetail,
+        ),
       ),
     );
   }
