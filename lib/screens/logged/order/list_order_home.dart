@@ -58,26 +58,26 @@ class LimitOrderState extends State<LimitOrder> {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       late Color header;
-                      if (snapshot.data![index].type == '1' ||
-                          snapshot.data![index].type == '4' ||
-                          snapshot.data![index].type == 'inbound') {
+                      if (snapshot.data![index].orderStatus == '1' ||
+                          snapshot.data![index].orderStatus == '4' ||
+                          snapshot.data![index].orderStatus == 'inbound') {
                         header = Colors.green;
-                      } else if (snapshot.data![index].type == '2' ||
-                          snapshot.data![index].type == '3' ||
-                          snapshot.data![index].type == 'outbound') {
+                      } else if (snapshot.data![index].orderStatus == '2' ||
+                          snapshot.data![index].orderStatus == '3' ||
+                          snapshot.data![index].orderStatus == 'outbound') {
                         header = Colors.blue;
                       }
-                      String message = orderMessage[
-                          int.parse(snapshot.data![index].status) + 4];
+                      String message =
+                          orderMessage[snapshot.data![index].driverStatus+ 4];
 
                       return displayOrder(
                           header,
                           snapshot.data![index].origin,
                           snapshot.data![index].destination,
                           snapshot.data![index].orderId,
-                          snapshot.data![index].type,
+                          snapshot.data![index].orderStatus,
                           message,
-                          snapshot.data![index].shipline);
+                          snapshot.data![index].slName);
                     },
                   ),
                 ),

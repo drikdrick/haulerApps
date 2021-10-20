@@ -38,7 +38,6 @@ class _IndexState extends State<Index> {
       bottomNavigationBar: ConvexAppBar(
         initialActiveIndex: bottomIndex,
         backgroundColor: Colors.blue,
-        // curveSize: ,
         height: 45,
         items: const [
           TabItem(icon: Icons.auto_awesome_mosaic, activeIcon: Icons.auto_awesome_mosaic_outlined,title: "Home"),

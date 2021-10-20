@@ -39,9 +39,9 @@ class _FinishedOrderState extends State<FinishedOrder> {
                     doneOrder[index].origin,
                     doneOrder[index].destination,
                     doneOrder[index].orderId,
-                    doneOrder[index].type,
+                    doneOrder[index].orderStatus,
                     orderMessage[17],
-                    doneOrder[index].shipline);
+                    doneOrder[index].slName);
               },
             );
           }

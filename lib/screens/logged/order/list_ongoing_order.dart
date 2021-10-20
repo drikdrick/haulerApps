@@ -35,26 +35,26 @@ class _OngoingOrderState extends State<OngoingOrder> {
               itemCount: doneOrder.length,
               itemBuilder: (context, index) {
                 late Color header;
-                if (doneOrder[index].type == '1' ||
-                    doneOrder[index].type == '4' ||
-                    doneOrder[index].type == 'inbound') {
+                if (doneOrder[index].orderStatus == '1' ||
+                    doneOrder[index].orderStatus == '4' ||
+                    doneOrder[index].orderStatus == 'inbound') {
                   header = Colors.green;
-                } else if (doneOrder[index].type == '2' ||
-                    doneOrder[index].type == '3' ||
-                    doneOrder[index].type == 'outbound') {
+                } else if (doneOrder[index].orderStatus == '2' ||
+                    doneOrder[index].orderStatus == '3' ||
+                    doneOrder[index].orderStatus == 'outbound') {
                   header = Colors.blue;
                 }
                 String message =
-                    orderMessage[int.parse(doneOrder[index].status) + 4];
+                    orderMessage[snapshot.data![index].driverStatus+ 4];
 
                 return displayOrder(
                     header,
                     doneOrder[index].origin,
                     doneOrder[index].destination,
                     doneOrder[index].orderId,
-                    doneOrder[index].type,
+                    doneOrder[index].orderStatus,
                     message,
-                    doneOrder[index].shipline);
+                    doneOrder[index].slName);
               },
             );
           }

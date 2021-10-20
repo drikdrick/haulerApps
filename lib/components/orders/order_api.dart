@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bokshaul_haulier/components/function/config.dart';
+import 'package:bokshaul_haulier/models/order_detail_model.dart';
 import 'package:bokshaul_haulier/models/order_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -52,6 +53,7 @@ Future<List<Order>> fetchCurrentOrder() async {
     throw Exception(jsonResponse["message"]);
   }
 }
+
 Future<List<Order>> fetchLimitedOrder() async {
   SharedPreferences _preferences = await SharedPreferences.getInstance();
   var userId = _preferences.getString("userId")!;
@@ -65,5 +67,16 @@ Future<List<Order>> fetchLimitedOrder() async {
         .toList();
   } else {
     throw Exception(jsonResponse["message"]);
+  }
+}
+
+Future<OrderDetail> fetchDetailOrder(String orderId) async {
+  Uri url = Uri.parse(baseUrl + "/orderberlangsung/detail/" + orderId);
+  var response = await http.get(url);
+  final jsonResponse = jsonDecode(response.body);
+  if (jsonResponse["success"]) {
+    return OrderDetail.fromJson(jsonResponse["data"][0]);
+  } else {
+    throw Exception(jsonResponse["messaage"]);
   }
 }

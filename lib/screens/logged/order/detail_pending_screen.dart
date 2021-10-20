@@ -1,9 +1,12 @@
+import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/models/order_detail_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailPending extends StatelessWidget {
-  const DetailPending({Key? key}) : super(key: key);
+  final OrderDetail currentOrder;
+  const DetailPending({Key? key, required this.currentOrder}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,27 +22,13 @@ class DetailPending extends StatelessWidget {
             width: layoutWidth(context),
             child: Padding(
               padding: const EdgeInsets.all(15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("GK-Order", style: kHeadlineSmall),
-                      Text("No. Container", style: kHeadlineSmall),
-                      Text("Shipping Line", style: kHeadlineSmall),
-                      Text("Jenis", style: kHeadlineSmall),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      Text("GK-Order"),
-                      Text("No. Container"),
-                      Text("Shipping Line"),
-                      Text("Jenis"),
-                    ],
-                  ),
+                  const Text("General Information"),
+                  const Divider(),
+                  detailInfoCard("Order ID#", currentOrder.gkNumber),
+                  detailInfoCard("Shipping Line", currentOrder.shipLine),
+                  detailInfoCard("Type", currentOrder.orderType),
                 ],
               ),
             ),
@@ -50,23 +39,13 @@ class DetailPending extends StatelessWidget {
             width: layoutWidth(context),
             child: Padding(
               padding: const EdgeInsets.all(15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("Nama Supir", style: kHeadlineSmall),
-                      Text("No. Polisi", style: kHeadlineSmall),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      Text("GK-Order"),
-                      Text("No. Container"),
-                    ],
-                  ),
+                  const Text("Unit Information"),
+                  const Divider(),
+                  detailInfoCard("No. Container", currentOrder.containerNum),
+                  detailInfoCard("Driver Name", currentOrder.driverName),
+                  detailInfoCard("No. Polisi", currentOrder.policeNum),
                 ],
               ),
             ),
@@ -80,17 +59,11 @@ class DetailPending extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Dari:"),
-                    Text("Tanjung Priok", style: kHeadlineSmall),
-                    const Text(
-                      "Jalan Sunter Garden Blok B9 no 12 rt 005 / rw 018 kelurahan, RT.5/RW.18, Sunter Agung, Tanjung Priok, North Jakarta City, Jakarta 14350",
-                    ),
+                    Text("Asal", style: kHeadlineSmall),
+                    Text(currentOrder.origin),
                     const SizedBox(height: 10),
-                    const Text("Ke:"),
-                    Text("Tanjung Priok", style: kHeadlineSmall),
-                    const Text(
-                      "Jalan Sunter Garden Blok B9 no 12 rt 005 / rw 018 kelurahan, RT.5/RW.18, Sunter Agung, Tanjung Priok, North Jakarta City, Jakarta 14350",
-                    ),
+                    Text("Tujuan", style: kHeadlineSmall),
+                    Text(currentOrder.destination),
                     const SizedBox(height: 10)
                   ],
                 )),

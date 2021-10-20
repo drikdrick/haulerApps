@@ -1,6 +1,4 @@
-import 'package:bokshaul_haulier/components/orders/order_cards.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/screens/logged/order/list_order_home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,9 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
             Stack(
               children: [
                 ClipRRect(
-                  borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
-                  child: 
-                  CarouselSlider(
+                  borderRadius:
+                      const BorderRadius.vertical(bottom: Radius.circular(20)),
+                  child: CarouselSlider(
                     carouselController: _controller,
                     options: CarouselOptions(
                       height: 250,
