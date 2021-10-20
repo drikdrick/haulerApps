@@ -3,6 +3,7 @@ import 'package:bokshaul_haulier/components/orders/order_cards.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/models/order_model.dart';
+import 'package:bokshaul_haulier/screens/logged/order/detail_ongoing_screen.dart';
 import 'package:flutter/material.dart';
 
 class OngoingOrder extends StatefulWidget {
@@ -47,14 +48,19 @@ class _OngoingOrderState extends State<OngoingOrder> {
                 String message =
                     orderMessage[snapshot.data![index].driverStatus+ 4];
 
-                return displayOrder(
-                    header,
-                    doneOrder[index].origin,
-                    doneOrder[index].destination,
-                    doneOrder[index].orderId,
-                    doneOrder[index].orderStatus,
-                    message,
-                    doneOrder[index].slName);
+                return InkWell(
+                  onTap: (){
+                    navigateTo(context, const DetailOngoing());
+                  },
+                  child: displayOrder(
+                      header,
+                      doneOrder[index].origin,
+                      doneOrder[index].destination,
+                      doneOrder[index].orderId,
+                      doneOrder[index].orderStatus,
+                      message,
+                      doneOrder[index].slName),
+                );
               },
             );
           }

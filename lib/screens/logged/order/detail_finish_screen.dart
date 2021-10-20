@@ -12,7 +12,7 @@ class DetailFinish extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Order Pending"),
+        title: const Text("Order Done"),
       ),
       body: SingleChildScrollView(
         child: Column(

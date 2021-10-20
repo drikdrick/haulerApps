@@ -1,6 +1,9 @@
 import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
+import 'package:bokshaul_haulier/components/invoices/invoice_api.dart';
+import 'package:bokshaul_haulier/components/invoices/invoice_list.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/models/invoice_model.dart';
 import 'package:bokshaul_haulier/screens/logged/invoice/detail_invoice_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,57 +15,51 @@ class InvoicePaid extends StatefulWidget {
 }
 
 class _InvoicePaidState extends State<InvoicePaid> {
+  late Future<List<Invoice>> futureInvoice;
+  @override
+  void initState() {
+    super.initState();
+    _refreshData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          paidTile(context),
-          paidTile(context),
-          paidTile(context),
-          paidTile(context),
-          paidTile(context),
-          paidTile(context),
-          paidTile(context),
-        ],
+      body: FutureBuilder<List<Invoice>>(
+        future: futureInvoice,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            if (snapshot.data!.isEmpty) {
+              return Center(
+                child: Text(
+                  'Data tidak ditermukan',
+                  style: kHeadlineSmall,
+                ),
+              );
+            }
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () => navigateTo(context, const DetailInvoice()),
+                    child: paidTile(
+                        snapshot.data![index].invoiceImport,
+                        snapshot.data![index].createdAt,
+                        snapshot.data![index].slName,
+                        snapshot.data![index].voyageNum,
+                        snapshot.data![index].driverName,
+                        snapshot.data![index].policePlate,
+                        snapshot.data![index].price),
+                  );
+                });
+          }
+          return showLoading(context, true);
+        },
       ),
     );
   }
 
-  Widget paidTile(BuildContext context) {
-    return InkWell(
-      onTap: ()=>navigateTo(context, const DetailInvoice()),
-      child: Card(
-        shadowColor: Colors.blue,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(0))),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "IMP-250621-CMAC 1230001-1",
-                    style: kHeadlineSmall.copyWith(fontSize: 12),
-                  ),
-                  Text(
-                    "2021-06-25 18:32:03",
-                    style: kBodySmall.copyWith(color: Colors.blueGrey),
-                  ),
-                ],
-              ),
-              const Divider(),
-              detailInfoCard("Shipping Line", "CMA CGM"),
-              detailInfoCard("Voyage Number", "511S"),
-              detailInfoCard("Driver Name", "Ade Rohman"),
-              detailInfoCard("No. Polisi", "B9002UEI"),
-              detailCard("Total", '600,000'),
-            ],
-          ),
-        ),
-      ),
-    );
+  void _refreshData() {
+    futureInvoice = fetchPaidInvoiceList();
   }
 }
