@@ -10,7 +10,7 @@ Widget statusOrder(String msg) {
         color: Colors.blue,
       ),
       title: Text(msg),
-      subtitle: const Text("--:--"),
+      // subtitle: const Text("--:--"),
       // dense: true,
     ),
   );

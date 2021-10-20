@@ -24,38 +24,36 @@ class _InvoicePaidState extends State<InvoicePaid> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder<List<Invoice>>(
-        future: futureInvoice,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            if (snapshot.data!.isEmpty) {
-              return Center(
-                child: Text(
-                  'Data tidak ditermukan',
-                  style: kHeadlineSmall,
-                ),
-              );
-            }
-            return ListView.builder(
-                itemCount: snapshot.data!.length,
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () => navigateTo(context, const DetailInvoice()),
-                    child: paidTile(
-                        snapshot.data![index].invoiceImport,
-                        snapshot.data![index].createdAt,
-                        snapshot.data![index].slName,
-                        snapshot.data![index].voyageNum,
-                        snapshot.data![index].driverName,
-                        snapshot.data![index].policePlate,
-                        snapshot.data![index].price),
-                  );
-                });
+    return FutureBuilder<List<Invoice>>(
+      future: futureInvoice,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data!.isEmpty) {
+            return Center(
+              child: Text(
+                'Data tidak ditermukan',
+                style: kHeadlineSmall,
+              ),
+            );
           }
-          return showLoading(context, true);
-        },
-      ),
+          return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () => navigateTo(context, const DetailInvoice()),
+                  child: paidTile(
+                      snapshot.data![index].invoiceImport,
+                      snapshot.data![index].createdAt,
+                      snapshot.data![index].slName,
+                      snapshot.data![index].voyageNum,
+                      snapshot.data![index].driverName,
+                      snapshot.data![index].policePlate,
+                      snapshot.data![index].price),
+                );
+              });
+        }
+        return showLoading(context, true);
+      },
     );
   }
 
