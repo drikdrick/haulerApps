@@ -1,4 +1,3 @@
-import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:flutter/material.dart';
 

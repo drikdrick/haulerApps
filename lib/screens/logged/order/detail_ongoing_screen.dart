@@ -1,4 +1,3 @@
-import 'package:bokshaul_haulier/components/orders/info_card.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/screens/logged/order/map_app.dart';
@@ -130,14 +129,14 @@ class DetailOngoing extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: [
-                    statusOrder(),
-                    statusOrder(),
-                    statusOrder(),
-                    statusOrder(),
-                    statusOrder(),
-                    statusOrder(),
-                    statusOrder(),
-                    statusOrder(),
+                    // statusOrder(),
+                    // statusOrder(),
+                    // statusOrder(),
+                    // statusOrder(),
+                    // statusOrder(),
+                    // statusOrder(),
+                    // statusOrder(),
+                    // statusOrder(),
                   ],
                 ),
               )

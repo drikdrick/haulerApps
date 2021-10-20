@@ -14,7 +14,7 @@ class PendingOrder extends StatefulWidget {
 }
 
 class _PendingOrderState extends State<PendingOrder> {
-  bool _isLoading = false;
+  final bool _isLoading = false;
   late Future<List<Order>> futureOrder;
   @override
   void initState() {
