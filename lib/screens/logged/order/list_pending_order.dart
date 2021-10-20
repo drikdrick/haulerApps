@@ -30,39 +30,27 @@ class _PendingOrderState extends State<PendingOrder> {
           future: futureOrder,
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              List<Order> doneOrder = snapshot.data!;
+              List<Order> pendingOrder = snapshot.data!;
               if (snapshot.data!.isEmpty) {
                 return Center(
                     child: Text("Data tidak ditermukan.", style: kHeadline));
               }
               return ListView.builder(
-                itemCount: doneOrder.length,
+                itemCount: pendingOrder.length,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      setState(() {
-                        _isLoading = true;
-                      });
-                      fetchDetailOrder(doneOrder[index].orderId).then((value) {
-                        navigateTo(
-                          context,
-                          DetailPending(
-                            currentOrder: value,
-                          ),
-                        );
-                        setState(() {
-                          _isLoading = false;
-                        });
-                      });
+                      navigateTo(context,
+                          DetailPending(currentOrder: pendingOrder[index]));
                     },
                     child: displayOrder(
                         Colors.orange,
-                        doneOrder[index].origin,
-                        doneOrder[index].destination,
-                        doneOrder[index].orderId,
-                        doneOrder[index].orderStatus,
+                        pendingOrder[index].origin,
+                        pendingOrder[index].destination,
+                        pendingOrder[index].orderId,
+                        pendingOrder[index].orderStatus,
                         "-",
-                        doneOrder[index].slName),
+                        pendingOrder[index].slName),
                   );
                 },
               );

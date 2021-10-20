@@ -1,3 +1,4 @@
+import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:flutter/material.dart';
 
@@ -18,9 +19,11 @@ Widget detailCard(String process, String price) {
 }
 
 Widget detailInfoCard(String info, String description) {
-  if (description == '1' || description == '4' || description == 'inbound' ) {
+  if (description == '1' || description == '4' || description == 'inbound') {
     description = 'Inbound/Import';
-  }else if (description == '2' || description == '3' || description == 'outbound' ) {
+  } else if (description == '2' ||
+      description == '3' ||
+      description == 'outbound') {
     description = 'Outbound/Eksport';
   }
   return Row(
@@ -36,4 +39,43 @@ Widget detailInfoCard(String info, String description) {
       ),
     ],
   );
+}
+
+Widget addressSolution(String type, String origin, String oriAddress,
+    String destination, String desAddress) {
+  if (type == '1' || type == '4' || type == 'inbound') {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text("Asal :"),
+          Text(origin, style: kHeadlineSmall),
+          Text(oriAddress),
+          const SizedBox(height: 10),
+          const Text("Tujuan :"),
+          Text(destination, style: kHeadlineSmall),
+          Text(desAddress),
+          const SizedBox(height: 10)
+        ],
+      ),
+    );
+  } else {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text("Asal :"),
+          Text(destination, style: kHeadlineSmall),
+          Text(desAddress),
+          const SizedBox(height: 10),
+          const Text("Tujuan :"),
+          Text(origin, style: kHeadlineSmall),
+          Text(oriAddress),
+          const SizedBox(height: 10),
+        ],
+      ),
+    );
+  }
 }

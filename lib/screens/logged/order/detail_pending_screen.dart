@@ -1,11 +1,11 @@
 import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/models/order_detail_model.dart';
+import 'package:bokshaul_haulier/models/order_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailPending extends StatelessWidget {
-  final OrderDetail currentOrder;
+  final Order currentOrder;
   const DetailPending({Key? key, required this.currentOrder}) : super(key: key);
 
   @override
@@ -26,9 +26,12 @@ class DetailPending extends StatelessWidget {
                 children: [
                   const Text("General Information"),
                   const Divider(),
-                  detailInfoCard("Order ID#", currentOrder.gkNumber),
-                  detailInfoCard("Shipping Line", currentOrder.shipLine),
-                  detailInfoCard("Type", currentOrder.orderType),
+                  detailInfoCard("Order ID#", currentOrder.orderId),
+                  detailInfoCard("ETD", currentOrder.etd),
+                  detailInfoCard("Shipping Line", currentOrder.slName),
+                  detailInfoCard("Vessel Name", currentOrder.vesselName),
+                  detailInfoCard("Voyage Number", currentOrder.voyageNum),
+                  detailInfoCard("Type", currentOrder.orderStatus),
                 ],
               ),
             ),
@@ -45,7 +48,7 @@ class DetailPending extends StatelessWidget {
                   const Divider(),
                   detailInfoCard("No. Container", currentOrder.containerNum),
                   detailInfoCard("Driver Name", currentOrder.driverName),
-                  detailInfoCard("No. Polisi", currentOrder.policeNum),
+                  detailInfoCard("No. Polisi", currentOrder.policePlate),
                 ],
               ),
             ),
@@ -54,19 +57,12 @@ class DetailPending extends StatelessWidget {
           Container(
             color: Colors.white,
             width: layoutWidth(context),
-            child: Padding(
-                padding: const EdgeInsets.all(15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Asal", style: kHeadlineSmall),
-                    Text(currentOrder.origin),
-                    const SizedBox(height: 10),
-                    Text("Tujuan", style: kHeadlineSmall),
-                    Text(currentOrder.destination),
-                    const SizedBox(height: 10)
-                  ],
-                )),
+            child: addressSolution(
+                currentOrder.orderStatus,
+                currentOrder.origin,
+                currentOrder.originAdress,
+                currentOrder.destination,
+                currentOrder.destAddress),
           ),
         ],
       ),

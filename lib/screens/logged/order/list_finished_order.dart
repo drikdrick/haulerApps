@@ -3,6 +3,7 @@ import 'package:bokshaul_haulier/components/orders/order_cards.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
 import 'package:bokshaul_haulier/models/order_model.dart';
+import 'package:bokshaul_haulier/screens/logged/order/detail_finish_screen.dart';
 import 'package:flutter/material.dart';
 
 class FinishedOrder extends StatefulWidget {
@@ -34,14 +35,20 @@ class _FinishedOrderState extends State<FinishedOrder> {
             return ListView.builder(
               itemCount: doneOrder.length,
               itemBuilder: (context, index) {
-                return displayOrder(
-                    Colors.blueGrey.withOpacity(0.75),
-                    doneOrder[index].origin,
-                    doneOrder[index].destination,
-                    doneOrder[index].orderId,
-                    doneOrder[index].orderStatus,
-                    orderMessage[17],
-                    doneOrder[index].slName);
+                return InkWell(
+                  onTap: () {
+                    navigateTo(
+                        context, DetailFinish(currentOrder: doneOrder[index]));
+                  },
+                  child: displayOrder(
+                      Colors.blueGrey.withOpacity(0.75),
+                      doneOrder[index].origin,
+                      doneOrder[index].destination,
+                      doneOrder[index].orderId,
+                      doneOrder[index].orderStatus,
+                      orderMessage[17],
+                      doneOrder[index].slName),
+                );
               },
             );
           }
