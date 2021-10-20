@@ -33,7 +33,6 @@ class _DetailInvoiceState extends State<DetailInvoice> {
         future: futureInvoice,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            print(snapshot.data!.totalHarga);
             return Column(
               children: [
                 Padding(

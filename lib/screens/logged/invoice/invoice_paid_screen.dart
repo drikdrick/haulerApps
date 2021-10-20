@@ -1,4 +1,3 @@
-import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
 import 'package:bokshaul_haulier/components/invoices/invoice_api.dart';
 import 'package:bokshaul_haulier/components/invoices/invoice_list.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
@@ -41,7 +40,12 @@ class _InvoicePaidState extends State<InvoicePaid> {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () => navigateTo(
-                      context, DetailInvoice(id: snapshot.data![index].gateId, current: snapshot.data![index],)),
+                    context,
+                    DetailInvoice(
+                      id: snapshot.data![index].gateId,
+                      current: snapshot.data![index],
+                    ),
+                  ),
                   child: paidTile(
                       snapshot.data![index].invoiceImport,
                       snapshot.data![index].createdAt,

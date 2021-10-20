@@ -21,7 +21,7 @@ List<Widget> doneMilestones(Order order) {
   if (order.orderStatus == '1' ||
       order.orderStatus == '4' ||
       order.orderStatus == 'inbound') {
-    for (var i = -4; i <= order.driverStatus; i++) {
+    for (var i = -4; i < order.driverStatus; i++) {
       if (i >= 8 && i <= 12) {
         continue;
       }
@@ -30,7 +30,7 @@ List<Widget> doneMilestones(Order order) {
   } else if (order.orderStatus == '2' ||
       order.orderStatus == '3' ||
       order.orderStatus == 'outbound') {
-    for (var i = 4; i <= order.driverStatus; i++) {
+    for (var i = 4; i < order.driverStatus; i++) {
       milestone.add(statusOrder(orderMessage[i + 4]));
     }
   }

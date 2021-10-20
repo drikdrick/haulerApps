@@ -1,4 +1,3 @@
-import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
 import 'package:bokshaul_haulier/components/invoices/invoice_api.dart';
 import 'package:bokshaul_haulier/components/invoices/invoice_list.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';

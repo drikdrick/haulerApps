@@ -1,12 +1,25 @@
+import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
+import 'package:bokshaul_haulier/components/orders/info_card.dart';
 import 'package:bokshaul_haulier/helpers/layout.dart';
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/models/order_detail_model.dart';
+import 'package:bokshaul_haulier/models/order_model.dart';
 import 'package:bokshaul_haulier/screens/logged/order/map_app.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class DetailOngoing extends StatelessWidget {
-  const DetailOngoing({Key? key}) : super(key: key);
+class DetailOngoing extends StatefulWidget {
+  final Order currentOrder;
+  final OrderDetail currentDetail;
+  const DetailOngoing(
+      {Key? key, required this.currentOrder, required this.currentDetail})
+      : super(key: key);
 
+  @override
+  _DetailOngoingState createState() => _DetailOngoingState();
+}
+
+class _DetailOngoingState extends State<DetailOngoing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +58,7 @@ class DetailOngoing extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Driver sedang menuju ke depo",
+                            orderMessage[widget.currentOrder.driverStatus + 4],
                             style: kHeadlineSmall,
                             overflow: TextOverflow.visible,
                           ),
@@ -58,86 +71,24 @@ class DetailOngoing extends StatelessWidget {
                 ),
               ),
               const Divider(thickness: 2),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("GK-Order", style: kHeadlineSmall),
-                      Text("No. Container", style: kHeadlineSmall),
-                      Text("Jenis", style: kHeadlineSmall),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: const [
-                      Text("GK-T-2021082135"),
-                      Text("RFKU 2806216"),
-                      Text("Inbound"),
-                    ],
-                  ),
-                ],
-              ),
+              detailInfoCard("Order ID#", widget.currentOrder.orderId),
+              detailInfoCard("ETD", widget.currentOrder.etd),
+              detailInfoCard("Shipping Line", widget.currentOrder.slName),
+              detailInfoCard("Vessel Name", widget.currentOrder.vesselName),
+              detailInfoCard("Voyage Number", widget.currentOrder.voyageNum),
+              detailInfoCard("Container Number", widget.currentOrder.containerNum),
+              detailInfoCard("Type", widget.currentOrder.orderStatus),
               const Divider(thickness: 2),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Asiatex Cileungsi",
-                            style: kHeadlineSmall,
-                            overflow: TextOverflow.visible,
-                          ),
-                          const Text(
-                            "JL Raya Mayor Oking, No. 35, Citeureup, Citeureup, Bogor, Jawa Barat 16810",
-                            overflow: TextOverflow.visible,
-                            textAlign: TextAlign.justify,
-                          )
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    const Icon(Icons.double_arrow),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Asiatex Cileungsi",
-                            style: kHeadlineSmall,
-                            overflow: TextOverflow.visible,
-                          ),
-                          const Text(
-                            "JL Raya Mayor Oking, No. 35, Citeureup, Citeureup, Bogor, Jawa Barat 16810",
-                            overflow: TextOverflow.visible,
-                            textAlign: TextAlign.justify,
-                          )
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              addressSolution(
+                  widget.currentOrder.orderStatus,
+                  widget.currentOrder.origin,
+                  widget.currentOrder.originAdress,
+                  widget.currentOrder.destination,
+                  widget.currentOrder.destAddress),
               const Divider(thickness: 2),
               Expanded(
                 child: ListView(
-                  children: [
-                    // statusOrder(),
-                    // statusOrder(),
-                    // statusOrder(),
-                    // statusOrder(),
-                    // statusOrder(),
-                    // statusOrder(),
-                    // statusOrder(),
-                    // statusOrder(),
-                  ],
+                  children: [...doneMilestones(widget.currentOrder)],
                 ),
               )
             ],

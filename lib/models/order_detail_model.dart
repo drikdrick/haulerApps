@@ -1,51 +1,59 @@
 class OrderDetail {
-  String gkNumber, forwarder, driverName, truckerName, policeNum;
-  String shipLine, shipperName, shipperAddress, orderType, containerNum;
-  String origin,
-      destination,
-      originLat,
-      originLong,
-      destinationLat,
-      destinationLong;
-  int driverStatus;
-
   OrderDetail({
-    required this.gkNumber,
-    required this.forwarder,
-    required this.driverName,
-    required this.truckerName,
-    required this.policeNum,
-    required this.shipLine,
-    required this.shipperName,
-    required this.shipperAddress,
-    required this.orderType,
-    required this.containerNum,
+    required this.gkOrder,
+    required this.namaDriver,
+    required this.noPolisi,
+    required this.companyName,
+    required this.noContainer,
+    required this.statusOrder,
+    required this.statusDriver,
+    required this.slName,
     required this.origin,
     required this.destination,
-    required this.originLat,
-    required this.originLong,
-    required this.destinationLat,
-    required this.destinationLong,
-    required this.driverStatus,
+    required this.originCoordinate,
+    required this.destinationCoordinate,
   });
 
+  String gkOrder;
+  String namaDriver;
+  String noPolisi;
+  String companyName;
+  String noContainer;
+  String statusOrder;
+  int statusDriver;
+  String slName;
+  String origin;
+  String destination;
+  String originCoordinate;
+  String destinationCoordinate;
+
   factory OrderDetail.fromJson(Map<String, dynamic> json) => OrderDetail(
-        gkNumber: json["gk_number"],
-        forwarder: json["forwarder"],
-        driverName: json["nama_driver"],
-        truckerName: json["nama_trucker"],
-        policeNum: json["no_polisi"],
-        shipLine: json["nama_sl"],
-        shipperName: json["shipper"],
-        shipperAddress: json["alamat_shp"],
-        orderType: json["type_order"],
-        containerNum: json["no_container"],
+        gkOrder: json["gk_order"],
+        namaDriver: json["nama_driver"],
+        noPolisi: json["no_polisi"],
+        companyName: json["company_name"],
+        noContainer: json["no_container"],
+        statusOrder: json["status_order"],
+        statusDriver: json["status_driver"],
+        slName: json["sl_name"],
         origin: json["origin"],
         destination: json["destination"],
-        originLat: json["lat_origin"],
-        originLong: json["long_origin"],
-        destinationLat: json["lat_destination"],
-        destinationLong: json["long_destination"],
-        driverStatus: json["status_driver"],
+        originCoordinate: json["origin_coordinate"],
+        destinationCoordinate: json["destination_coordinate"],
       );
+
+  Map<String, dynamic> toJson() => {
+        "gk_order": gkOrder,
+        "nama_driver": namaDriver,
+        "no_polisi": noPolisi,
+        "company_name": companyName,
+        "no_container": noContainer,
+        "status_order": statusOrder,
+        "status_driver": statusDriver,
+        "sl_name": slName,
+        "origin": origin,
+        "destination": destination,
+        "origin_coordinate": originCoordinate,
+        "destination_coordinate": destinationCoordinate,
+      };
 }

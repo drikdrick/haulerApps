@@ -15,6 +15,7 @@ class OngoingOrder extends StatefulWidget {
 
 class _OngoingOrderState extends State<OngoingOrder> {
   late Future<List<Order>> futureOrder;
+  bool _isLoading = false;
   @override
   void initState() {
     super.initState();
@@ -23,49 +24,66 @@ class _OngoingOrderState extends State<OngoingOrder> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Order>>(
-        future: futureOrder,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            List<Order> doneOrder = snapshot.data!;
-            if (snapshot.data!.isEmpty) {
-              return Center(
-                  child: Text("Data tidak ditermukan.", style: kHeadline));
-            }
-            return ListView.builder(
-              itemCount: doneOrder.length,
-              itemBuilder: (context, index) {
-                late Color header;
-                if (doneOrder[index].orderStatus == '1' ||
-                    doneOrder[index].orderStatus == '4' ||
-                    doneOrder[index].orderStatus == 'inbound') {
-                  header = Colors.green;
-                } else if (doneOrder[index].orderStatus == '2' ||
-                    doneOrder[index].orderStatus == '3' ||
-                    doneOrder[index].orderStatus == 'outbound') {
-                  header = Colors.blue;
-                }
-                String message =
-                    orderMessage[snapshot.data![index].driverStatus+ 4];
+    return Stack(
+      children: [
+        FutureBuilder<List<Order>>(
+          future: futureOrder,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Order> doneOrder = snapshot.data!;
+              if (snapshot.data!.isEmpty) {
+                return Center(
+                    child: Text("Data tidak ditermukan.", style: kHeadline));
+              }
+              return ListView.builder(
+                itemCount: doneOrder.length,
+                itemBuilder: (context, index) {
+                  late Color header;
+                  if (doneOrder[index].orderStatus == '1' ||
+                      doneOrder[index].orderStatus == '4' ||
+                      doneOrder[index].orderStatus == 'inbound') {
+                    header = Colors.green;
+                  } else if (doneOrder[index].orderStatus == '2' ||
+                      doneOrder[index].orderStatus == '3' ||
+                      doneOrder[index].orderStatus == 'outbound') {
+                    header = Colors.blue;
+                  }
+                  String message =
+                      orderMessage[snapshot.data![index].driverStatus + 4];
 
-                return InkWell(
-                  onTap: (){
-                    navigateTo(context, const DetailOngoing());
-                  },
-                  child: displayOrder(
-                      header,
-                      doneOrder[index].origin,
-                      doneOrder[index].destination,
-                      doneOrder[index].orderId,
-                      doneOrder[index].orderStatus,
-                      message,
-                      doneOrder[index].slName),
-                );
-              },
-            );
-          }
-          return showLoading(context, true);
-        });
+                  return InkWell(
+                    onTap: () {
+                      setState(() {
+                        _isLoading = true;
+                      });
+                      fetchDetailOrder(doneOrder[index].orderId).then(
+                        (value) => navigateTo(
+                          context,
+                          DetailOngoing(currentOrder: snapshot.data![index], currentDetail: value,),
+                        ),
+                      );
+                      setState(() {
+                        _isLoading = false;
+                      });
+                    },
+                    child: displayOrder(
+                        header,
+                        doneOrder[index].origin,
+                        doneOrder[index].destination,
+                        doneOrder[index].orderId,
+                        doneOrder[index].orderStatus,
+                        message,
+                        doneOrder[index].slName),
+                  );
+                },
+              );
+            }
+            return showLoading(context, true);
+          },
+        ),
+        showLoading(context, _isLoading),
+      ],
+    );
   }
 
   void _refreshData() {
