@@ -40,7 +40,8 @@ class _InvoicePaidState extends State<InvoicePaid> {
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 return InkWell(
-                  onTap: () => navigateTo(context, const DetailInvoice()),
+                  onTap: () => navigateTo(
+                      context, DetailInvoice(id: snapshot.data![index].gateId, current: snapshot.data![index],)),
                   child: paidTile(
                       snapshot.data![index].invoiceImport,
                       snapshot.data![index].createdAt,

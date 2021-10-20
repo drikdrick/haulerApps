@@ -1,4 +1,5 @@
 import 'package:bokshaul_haulier/helpers/text_style.dart';
+import 'package:bokshaul_haulier/models/invoice_detail_model.dart';
 import 'package:flutter/material.dart';
 
 Widget detailCard(String process, String price) {
@@ -77,4 +78,16 @@ Widget addressSolution(String type, String origin, String oriAddress,
       ),
     );
   }
+}
+
+List<Widget> priceList(InvoiceDetail data) {
+  List<Widget> bon = [];
+  for (var i = 0; i < data.dataInvoice.length; i++) {
+    bon.add(
+        detailCard(data.dataInvoice[i].keterangan, data.dataInvoice[i].harga));
+    bon.add(
+      const SizedBox(height: 10),
+    );
+  }
+  return bon;
 }
