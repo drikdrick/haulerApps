@@ -1,9 +1,9 @@
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/order/list_finished_order.dart';
-import 'package:bokshaul_haulier/screens/logged/order/list_ongoing_order.dart';
-import 'package:bokshaul_haulier/screens/logged/order/list_pending_order.dart';
+import '../../../helpers/layout.dart';
+import '../../../helpers/text_style.dart';
+import '../invoice/invoice_screen.dart';
+import 'list_finished_order.dart';
+import 'list_ongoing_order.dart';
+import 'list_pending_order.dart';
 import 'package:flutter/material.dart';
 
 class OrderScreen extends StatefulWidget {

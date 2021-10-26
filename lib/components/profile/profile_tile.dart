@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:bokshaul_haulier/components/function/config.dart';
-import 'package:bokshaul_haulier/components/function/login.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/models/user_model.dart';
+import '../function/config.dart';
+import '../function/login.dart';
+import '../../helpers/layout.dart';
+import '../../models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';

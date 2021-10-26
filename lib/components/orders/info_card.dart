@@ -1,4 +1,4 @@
-import 'package:bokshaul_haulier/models/order_model.dart';
+import '../../models/order_model.dart';
 import 'package:flutter/material.dart';
 
 Widget statusOrder(String msg) {

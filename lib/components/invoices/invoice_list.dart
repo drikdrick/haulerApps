@@ -1,4 +1,4 @@
-import 'package:bokshaul_haulier/helpers/text_style.dart';
+import '../../helpers/text_style.dart';
 import 'package:flutter/material.dart';
 
 import 'detail_card.dart';

@@ -1,5 +1,5 @@
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/models/invoice_detail_model.dart';
+import '../../helpers/text_style.dart';
+import '../../models/invoice_detail_model.dart';
 import 'package:flutter/material.dart';
 
 Widget detailCard(String process, String price) {

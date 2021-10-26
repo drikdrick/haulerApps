@@ -1,5 +1,5 @@
-import 'package:bokshaul_haulier/components/function/login.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
+import '../components/function/login.dart';
+import '../helpers/layout.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

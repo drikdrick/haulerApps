@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:bokshaul_haulier/components/function/config.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/screens/authentication/login_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/index.dart';
+import 'config.dart';
+import '../../helpers/layout.dart';
+import '../../screens/authentication/login_screen.dart';
+import '../../screens/logged/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

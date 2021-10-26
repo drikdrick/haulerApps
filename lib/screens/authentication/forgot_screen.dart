@@ -1,7 +1,7 @@
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_input.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/screens/authentication/verify_otp_screen.dart';
+import '../../helpers/layout.dart';
+import '../../helpers/text_input.dart';
+import '../../helpers/text_style.dart';
+import 'verify_otp_screen.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPassword extends StatefulWidget {

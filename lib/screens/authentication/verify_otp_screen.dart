@@ -1,6 +1,6 @@
-import 'package:bokshaul_haulier/components/function/register.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
+import '../../components/function/register.dart';
+import '../../helpers/layout.dart';
+import '../../helpers/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';

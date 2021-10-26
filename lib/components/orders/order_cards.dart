@@ -1,5 +1,5 @@
-import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
+import '../invoices/detail_card.dart';
+import '../../helpers/text_style.dart';
 import 'package:flutter/material.dart';
 
 Widget displayOrder(

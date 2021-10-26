@@ -1,5 +1,5 @@
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_input.dart';
+import '../../helpers/layout.dart';
+import '../../helpers/text_input.dart';
 import 'package:flutter/material.dart';
 
 class ResetPassword extends StatefulWidget {

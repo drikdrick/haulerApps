@@ -1,9 +1,9 @@
-import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
-import 'package:bokshaul_haulier/components/invoices/invoice_api.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/models/invoice_detail_model.dart';
-import 'package:bokshaul_haulier/models/invoice_model.dart';
+import '../../../components/invoices/detail_card.dart';
+import '../../../components/invoices/invoice_api.dart';
+import '../../../helpers/layout.dart';
+import '../../../helpers/text_style.dart';
+import '../../../models/invoice_detail_model.dart';
+import '../../../models/invoice_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailInvoice extends StatefulWidget {

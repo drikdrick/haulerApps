@@ -1,9 +1,9 @@
-import 'package:bokshaul_haulier/components/function/login.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_input.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/screens/authentication/forgot_screen.dart';
-import 'package:bokshaul_haulier/screens/authentication/register_screen.dart';
+import '../../components/function/login.dart';
+import '../../helpers/layout.dart';
+import '../../helpers/text_input.dart';
+import '../../helpers/text_style.dart';
+import 'forgot_screen.dart';
+import 'register_screen.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {

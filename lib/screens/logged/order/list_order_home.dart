@@ -1,8 +1,8 @@
-import 'package:bokshaul_haulier/components/orders/order_api.dart';
-import 'package:bokshaul_haulier/components/orders/order_cards.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/models/order_model.dart';
+import '../../../components/orders/order_api.dart';
+import '../../../components/orders/order_cards.dart';
+import '../../../helpers/layout.dart';
+import '../../../helpers/text_style.dart';
+import '../../../models/order_model.dart';
 import 'package:flutter/material.dart';
 
 import 'detail_ongoing_screen.dart';

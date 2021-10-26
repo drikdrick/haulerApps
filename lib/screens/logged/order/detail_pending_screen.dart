@@ -1,6 +1,6 @@
-import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/models/order_model.dart';
+import '../../../components/invoices/detail_card.dart';
+import '../../../helpers/layout.dart';
+import '../../../models/order_model.dart';
 import 'package:flutter/material.dart';
 
 class DetailPending extends StatelessWidget {

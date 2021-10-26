@@ -1,4 +1,4 @@
-import 'package:bokshaul_haulier/screens/logged/home_screen.dart';
+import 'home_screen.dart';
 // import 'package:bokshaul_haulier/screens/logged/invoice/invoice_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/order/order_screen.dart';
 import 'package:bokshaul_haulier/screens/logged/profile/profile_screen.dart';

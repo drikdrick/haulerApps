@@ -1,12 +1,12 @@
-import 'package:bokshaul_haulier/components/profile/profile_tile.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/models/user_model.dart';
-import 'package:bokshaul_haulier/screens/logged/profile/call_center.dart';
-import 'package:bokshaul_haulier/screens/logged/profile/edit_password_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/profile/edit_profile_screen.dart';
-import 'package:bokshaul_haulier/screens/logged/profile/privacy_policy.dart';
-import 'package:bokshaul_haulier/screens/logged/profile/term_condition.dart';
+import '../../../components/profile/profile_tile.dart';
+import '../../../helpers/layout.dart';
+import '../../../helpers/text_style.dart';
+import '../../../models/user_model.dart';
+import 'call_center.dart';
+import 'edit_password_screen.dart';
+import 'edit_profile_screen.dart';
+import 'privacy_policy.dart';
+import 'term_condition.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {

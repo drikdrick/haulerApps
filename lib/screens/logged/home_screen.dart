@@ -1,5 +1,5 @@
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/screens/logged/order/list_order_home.dart';
+import '../../helpers/layout.dart';
+import 'order/list_order_home.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

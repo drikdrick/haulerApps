@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:bokshaul_haulier/components/function/config.dart';
-import 'package:bokshaul_haulier/models/order_detail_model.dart';
-import 'package:bokshaul_haulier/models/order_model.dart';
+import '../function/config.dart';
+import '../../models/order_detail_model.dart';
+import '../../models/order_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 

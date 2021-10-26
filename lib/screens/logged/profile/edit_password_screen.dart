@@ -1,7 +1,7 @@
-import 'package:bokshaul_haulier/components/profile/update_profile.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_input.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
+import '../../../components/profile/update_profile.dart';
+import '../../../helpers/layout.dart';
+import '../../../helpers/text_input.dart';
+import '../../../helpers/text_style.dart';
 import 'package:flutter/material.dart';
 
 class EditPassword extends StatefulWidget {

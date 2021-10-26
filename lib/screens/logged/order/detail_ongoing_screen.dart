@@ -1,10 +1,10 @@
-import 'package:bokshaul_haulier/components/invoices/detail_card.dart';
-import 'package:bokshaul_haulier/components/orders/info_card.dart';
-import 'package:bokshaul_haulier/helpers/layout.dart';
-import 'package:bokshaul_haulier/helpers/text_style.dart';
-import 'package:bokshaul_haulier/models/order_detail_model.dart';
-import 'package:bokshaul_haulier/models/order_model.dart';
-import 'package:bokshaul_haulier/screens/logged/order/map_app.dart';
+import '../../../components/invoices/detail_card.dart';
+import '../../../components/orders/info_card.dart';
+import '../../../helpers/layout.dart';
+import '../../../helpers/text_style.dart';
+import '../../../models/order_detail_model.dart';
+import '../../../models/order_model.dart';
+import 'map_app.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
